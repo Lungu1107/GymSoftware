@@ -1,0 +1,41 @@
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Transaction History</h2>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            {% if transactions %}
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for transaction in transactions %}
+                        <tr>
+                            <td>{{ transaction.payment_date.strftime('%Y-%m-%d %H:%M') }}</td>
+                            <td>£{{ '%.2f' | format(transaction.paid_amount) }}</td>
+                            <td>
+                                {% if transaction.status == 'completed' %}
+                                <span class="badge badge-success">{{ transaction.status.capitalize() }}</span>
+                                {% elif transaction.status == 'pending' %}
+                                <span class="badge badge-warning">{{ transaction.status.capitalize() }}</span>
+                                {% else %}
+                                <span class="badge badge-danger">{{ transaction.status.capitalize() }}</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ transaction.description or 'N/A' }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <p class="text-center">No transactions available.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>

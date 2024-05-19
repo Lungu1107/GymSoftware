@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Gym Locations{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Our Gym Locations</h2>
+    <div class="row">
+        <!-- Example location card -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <img src="{{ url_for('static', filename='img/img6.jpg') }}" class="card-img-top" alt="Location 1">
+                <div class="card-body">
+                    <h5 class="card-title">Downtown Gym</h5>
+                    <p class="card-text">123 Main Street, City, State, ZIP</p>
+                    <p class="card-text">Phone: (123) 456-7880</p>
+                    <p class="card-text">Hours: Mon-Fri 6am - 10pm, Sat-Sun 8am - 8pm</p>
+                    <a href="#" class="btn btn-primary">Get Directions</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Repeat for more locations -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <img src="{{ url_for('static', filename='img/img5.jpg') }}" class="card-img-top" alt="Location 2">
+                <div class="card-body">
+                    <h5 class="card-title">Uptown Gym</h5>
+                    <p class="card-text">456 Elm Street, City, State, ZIP</p>
+                    <p class="card-text">Phone: (123) 456-7890</p>
+                    <p class="card-text">Hours: Mon-Fri 6am - 10pm, Sat-Sun 8am - 8pm</p>
+                    <a href="#" class="btn btn-primary">Get Directions</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add more cards for additional locations -->
+    </div>
+</div>
+{% endblock %}

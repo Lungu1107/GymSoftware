@@ -1,0 +1,31 @@
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Membership Plans</h2>
+    <div class="row">
+        {% for plan in plans %}
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-dark text-white text-center">
+                    <h4 class="my-0 font-weight-normal">{{ plan.name }}</h4>
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title pricing-card-title">£{{ plan.price }} <small class="text-muted">/ {{ plan.period }}</small></h5>
+                    <p class="card-text mt-3">{{ plan.description }}</p>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li><i class="fa fa-check-circle"></i> Access to all gym facilities</li>
+                        <li><i class="fa fa-check-circle"></i> Free group classes</li>
+                        <li><i class="fa fa-check-circle"></i> Discounts on personal training sessions</li>
+                        {% if 'Premium' in plan.name %}
+                        <li><i class="fa fa-check-circle"></i> Access to premium equipment</li>
+                        <li><i class="fa fa-check-circle"></i> Personal training sessions included</li>
+                        {% endif %}
+                    </ul>
+                    <form method="POST" action="{{ url_for('views.purchase_plan') }}" class="mt-auto">
+                        <input type="hidden" name="plan_id" value="{{ plan.id }}">
+                        <button type="submit" class="btn btn-lg btn-block btn-dark">Purchase</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Assign a Personal Trainer</h2>
+    <div class="row">
+        {% for trainer in trainers %}
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-dark text-white text-center">
+                    <h4 class="my-0 font-weight-normal">{{ trainer.name }}</h4>
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{ trainer.specialty }}</h5>
+                    <p class="card-text"><strong>Available Hours:</strong> {{ trainer.available_hours }}</p>
+                    {% if 'Premium' not in user.plan.name %}
+                    <p class="card-text text-danger"><strong>Extra fee:</strong> £50</p>
+                    {% endif %}
+                    <p class="card-text text-info">Maximum one hour per day.</p>
+                    <form method="POST" action="{{ url_for('views.assign_trainer') }}" class="mt-auto">
+                        <input type="hidden" name="trainer_id" value="{{ trainer.id }}">
+                        <div class="form-group">
+                            <label for="schedule-{{ trainer.id }}">Select Timetable</label>
+                            <textarea class="form-control" id="schedule-{{ trainer.id }}" name="schedule" placeholder="Enter your schedule for the week (e.g., Mon 8-9am, Wed 3-4pm)"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-lg btn-block btn-dark">Assign Trainer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

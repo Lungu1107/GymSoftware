@@ -1,0 +1,27 @@
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Class Scheduling</h2>
+    <div class="row">
+        {% for gym_class in classes %}
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-dark text-white text-center">
+                    <h4 class="my-0 font-weight-normal">{{ gym_class.name }}</h4>
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{ gym_class.instructor }}</h5>
+                    <p class="card-text"><strong>Location:</strong> {{ gym_class.location }}</p>
+                    <p class="card-text"><strong>Difficulty Level:</strong> {{ gym_class.difficulty_level }}</p>
+                    <p class="card-text"><strong>Capacity:</strong> {{ gym_class.capacity }}</p>
+                    <p class="card-text"><strong>From:</strong> {{ gym_class.start_time.strftime('%Y-%m-%d %H:%M') }}</p>
+                    <p class="card-text"><strong>To:</strong> {{ gym_class.end_time.strftime('%Y-%m-%d %H:%M') }}</p>
+                    <p class="card-text">{{ gym_class.description }}</p>
+                    <form method="POST" action="{{ url_for('views.book_class') }}" class="mt-auto">
+                        <input type="hidden" name="class_id" value="{{ gym_class.id }}">
+                        <button type="submit" class="btn btn-lg btn-block btn-dark">Book Class</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Welcome to The Lion Gym</h1>
+
+    <!-- Section for images with content as buttons -->
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img src="{{ url_for('static', filename='img/img1.jpg') }}" class="card-img-top" alt="Gym Locations">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Gym Locations</h5>
+                    <p class="card-text">Find our gym locations around the city.</p>
+                    <a href="{{ url_for('views.locations') }}" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img src="{{ url_for('static', filename='img/img2.jpg') }}" class="card-img-top" alt="Gym Equipment">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Gym Equipment</h5>
+                    <p class="card-text">Top-of-the-line equipment to meet all your fitness needs.</p>
+                    <a href="{{ url_for('views.equipment') }}" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img src="{{ url_for('static', filename='img/img3.jpg') }}" class="card-img-top" alt="Gym Classes">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Gym Classes</h5>
+                    <p class="card-text">Join our group classes for a fun and engaging workout.</p>
+                    <a href="{{ url_for('views.profile') }}#scheduling" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img src="{{ url_for('static', filename='img/img4.jpg') }}" class="card-img-top" alt="Gym Trainers">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Gym Trainers</h5>
+                    <p class="card-text">Our expert trainers are here to help you achieve your goals.</p>
+                    <a href="{{ url_for('views.profile') }}#trainers" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img src="{{ url_for('static', filename='img/img10.jpg') }}" class="card-img-top" alt="Membership Plans">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Membership Plans</h5>
+                    <p class="card-text">Choose the plan that fits your lifestyle and goals.</p>
+                    <a href="{{ url_for('views.profile') }}#membership" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img src="{{ url_for('static', filename='img/img11.jpg') }}" class="card-img-top" alt="Billing Information">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Billing Information</h5>
+                    <p class="card-text">Manage your billing information with ease.</p>
+                    <a href="{{ url_for('views.profile') }}#billing" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

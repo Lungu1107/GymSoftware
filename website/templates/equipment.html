@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Gym Equipment{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Our Gym Equipment</h2>
+    <div class="row">
+        <!-- Example equipment card -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <img src="{{ url_for('static', filename='img/img7.jpg') }}" class="card-img-top" alt="Treadmill">
+                <div class="card-body">
+                    <h5 class="card-title">Treadmill</h5>
+                    <p class="card-text">State-of-the-art treadmills for your cardio workouts.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Repeat for more equipment -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <img src="{{ url_for('static', filename='img/img8.jpg') }}" class="card-img-top" alt="Dumbbells">
+                <div class="card-body">
+                    <h5 class="card-title">Dumbbells</h5>
+                    <p class="card-text">A wide range of dumbbells for strength training.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <img src="{{ url_for('static', filename='img/img9.jpg') }}" class="card-img-top" alt="Bench Press">
+                <div class="card-body">
+                    <h5 class="card-title">Bench Press</h5>
+                    <p class="card-text">Bench press stations for building upper body strength.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add more cards for additional equipment -->
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,88 @@
+<h2 class="text-center my-4">Dashboard</h2>
+
+<!-- Membership Overview -->
+<div class="row mb-4 justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-header bg-dark text-white text-center">
+                <h4 class="my-0 font-weight-normal">Membership Overview</h4>
+            </div>
+            <div class="card-body text-center">
+                {% if user.plan %}
+                <h5 class="card-title">{{ user.plan.name }}</h5>
+                <p class="card-text">
+                    <strong>Price:</strong> £{{ user.plan.price }} / {{ user.plan.period }}<br>
+                    <strong>Start Date:</strong> {{ user.membership_start_date.strftime('%d/%m/%Y') if user.membership_start_date else 'N/A' }}<br>
+                    <strong>End Date:</strong> {{ user.membership_end_date.strftime('%d/%m/%Y') if user.membership_end_date else 'N/A' }}
+                </p>
+                <ul class="list-unstyled mt-3 mb-4">
+                    <li><i class="fa fa-check"></i> Access to all gym facilities</li>
+                    <li><i class="fa fa-check"></i> Free group classes</li>
+                    <li><i class="fa fa-check"></i> Discounts on personal training sessions</li>
+                </ul>
+                {% else %}
+                <p>No active membership plan. <a href="{{ url_for('views.profile') }}#membership" class="btn btn-primary btn-sm">Browse plans</a> to find one that suits you.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Booked Classes -->
+<h3 class="text-center my-4">Booked Classes</h3>
+<div class="row mb-4">
+    {% if user.class_bookings %}
+    {% for booking in user.class_bookings %}
+    <div class="col-md-4">
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                <h5 class="my-0 font-weight-normal">{{ booking.gym_class.name }}</h5>
+                <i class="fa fa-calendar fa-2x"></i>
+            </div>
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">{{ booking.gym_class.instructor }}</h6>
+                <p class="card-text">
+                    <strong>From:</strong> {{ booking.gym_class.start_time.strftime('%Y-%m-%d %H:%M') }}<br>
+                    <strong>To:</strong> {{ booking.gym_class.end_time.strftime('%Y-%m-%d %H:%M') }}<br>
+                    <strong>Description:</strong> {{ booking.gym_class.description }}
+                </p>
+                <form method="POST" action="{{ url_for('views.cancel_class', class_booking_id=booking.id) }}">
+                    <button type="submit" class="btn btn-danger btn-block mt-3">Cancel Booking</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p class="col-12 text-center">No classes booked. <a href="{{ url_for('views.profile') }}#scheduling" class="btn btn-primary">Browse and book classes</a>.</p>
+    {% endif %}
+</div>
+
+<!-- Assigned Trainers -->
+<h3 class="text-center my-4">Assigned Trainers</h3>
+<div class="row mb-4">
+    {% if trainer_assignments %}
+    {% for assignment in trainer_assignments %}
+    <div class="col-md-4">
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                <h5 class="my-0 font-weight-normal">{{ assignment.trainer.name }}</h5>
+                <i class="fa fa-user fa-2x"></i>
+            </div>
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">{{ assignment.trainer.specialty }}</h6>
+                <p class="card-text">
+                    <strong>Assigned since:</strong> {{ assignment.start_date.strftime('%Y-%m-%d') }}<br>
+                    <strong>Schedule:</strong> {{ assignment.schedule }}
+                </p>
+                <form method="POST" action="{{ url_for('views.cancel_trainer', trainer_assignment_id=assignment.id) }}">
+                    <button type="submit" class="btn btn-danger btn-block mt-3">Cancel Assignment</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p class="col-12 text-center">No trainers assigned. <a href="{{ url_for('views.profile') }}#trainers" class="btn btn-primary">Assign a trainer</a>.</p>
+    {% endif %}
+</div>

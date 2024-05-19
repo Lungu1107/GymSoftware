@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<div class="profile-header">
+    <img src="{{ url_for('static', filename='img/img12.jpg') }}" class="img-fluid profile-header-image" alt="Profile Header">
+</div>
+<div class="container mt-4">
+    <h2 class="text-center my-4">Profile</h2>
+    <ul class="nav nav-pills mb-3" id="profileTabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="dashboard-tab" data-toggle="tab" href="#dashboard" role="tab" aria-controls="dashboard" aria-selected="true">Dashboard</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="membership-tab" data-toggle="tab" href="#membership" role="tab" aria-controls="membership" aria-selected="false">Membership</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="scheduling-tab" data-toggle="tab" href="#scheduling" role="tab" aria-controls="scheduling" aria-selected="false">Scheduling</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="trainers-tab" data-toggle="tab" href="#trainers" role="tab" aria-controls="trainers" aria-selected="false">Trainers</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="billing-tab" data-toggle="tab" href="#billing" role="tab" aria-controls="billing" aria-selected="false">Billing</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="transactions-tab" data-toggle="tab" href="#transactions" role="tab" aria-controls="transactions" aria-selected="false">Transactions</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="invoices-tab" data-toggle="tab" href="#invoices" role="tab" aria-controls="invoices" aria-selected="false">Invoices</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="track-hours-tab" data-toggle="tab" href="#track-hours" role="tab" aria-controls="track-hours" aria-selected="false">Track Hours</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="edit-profile-tab" data-toggle="tab" href="#edit-profile" role="tab" aria-controls="edit-profile" aria-selected="false">Edit Profile</a>
+        </li>
+    </ul>
+    <div class="tab-content mt-4">
+        <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+            {% include 'dashboard.html' %}
+        </div>
+        <div class="tab-pane fade" id="membership" role="tabpanel" aria-labelledby="membership-tab">
+            {% include 'membership_plans.html' %}
+        </div>
+        <div class="tab-pane fade" id="scheduling" role="tabpanel" aria-labelledby="scheduling-tab">
+            {% include 'class_scheduling.html' %}
+        </div>
+        <div class="tab-pane fade" id="trainers" role="tabpanel" aria-labelledby="trainers-tab">
+            {% include 'assign_trainer.html' %}
+        </div>
+        <div class="tab-pane fade" id="billing" role="tabpanel" aria-labelledby="billing-tab">
+            {% include 'billing.html' %}
+        </div>
+        <div class="tab-pane fade" id="transactions" role="tabpanel" aria-labelledby="transactions-tab">
+            {% include 'transactions.html' %}
+        </div>
+        <div class="tab-pane fade" id="invoices" role="tabpanel" aria-labelledby="invoices-tab">
+            {% include 'invoices.html' %}
+        </div>
+        <div class="tab-pane fade" id="track-hours" role="tabpanel" aria-labelledby="track-hours-tab">
+            {% include 'track_hours.html' %}
+        </div>
+        <div class="tab-pane fade" id="edit-profile" role="tabpanel" aria-labelledby="edit-profile-tab">
+            {% include 'edit_profile.html' %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script src="{{ url_for('static', filename='js/profile-tabs.js') }}"></script>
+{% endblock %}
