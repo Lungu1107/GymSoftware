@@ -1,4 +1,4 @@
-# Flask Web App Tutorial
+# Flask Web Gym Software
 
 ## Setup & Installation
 
@@ -18,6 +18,3 @@ pip install -r requirements.txt
 python main.py
 ```
 
-## Viewing The App
-
-Go to `http://127.0.0.1:5000`
